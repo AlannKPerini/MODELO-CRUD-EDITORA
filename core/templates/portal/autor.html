@@ -1,0 +1,71 @@
+{% extends 'portal/menu.html' %}
+
+{% block content %}
+    {% if message %}
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+    {% endif %}
+    <div class="card">
+        <div class="card-body">
+            <h4>AUTORES</h4>
+            <hr>
+           <a class="btn btn-success" href="{% url 'autor_add' %}">
+                <span class="text-light text-center">
+                    <i class="fa-solid fa-user-plus"></i>
+                                </span>
+                            </a>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Data Nascimento</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for autor in autores %}
+                    <tr>
+                        <td>{{ autor.nome }}</td>
+                        <td>{{ autor.email }}</td>
+                        <td>{{ autor.data_nascimento|date:"d/m/Y" }}</td>
+                        <td>
+                            <a class="btn btn-warning" href="{% url 'autor_edit' autor.id %}">
+                                <span class="text-light text-center">
+                               <i class="fa-regular fa-pen-to-square"></i>
+                                </span>
+                            </a>
+                            <a class="btn btn-danger" href="{% url 'autor_delete' autor.id %}"
+                               onclick="return confirm('Deseja realmente excluir?')">
+                                <span class="text-light text-center">
+                                <i class="fa-regular fa-trash-can"></i>
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+{#                {% for autor in autores %}#}
+{#                    <tr>#}
+{#                        <td>{{ autor.nome }}</td>#}
+{#                        <td>{{ autor.email }}</td>#}
+{#                        <td>{{ autor.data_nascimento }}</td>#}
+{#                        <td>#}
+{#                            <button class="btn-warning" href="{% url 'autor_edit' autor.id %}">Editar</button>#}
+{#                            <button class="btn-danger" href="{% url 'autor_delete' autor.id %}"#}
+{#                                    onclick="return confirm('Deseja realmente excluir?')">Excluir#}
+{#                            </button>#}
+{#                        </td>#}
+{##}
+{#                    </tr>#}
+{#                {% endfor %}#}
