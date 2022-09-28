@@ -56,6 +56,7 @@ def cliente(request):
         'clientes': clientes
     }
     return render(request, 'portal/cliente.html', context)
+
 def cliente_add(request):
     form = ClienteForm(request.POST or None)
     if request.POST:
@@ -66,6 +67,8 @@ def cliente_add(request):
         'form': form
     }
     return render(request, 'portal/cliente_add.html', context)
+
+    # FUNÇÃO PARA EDITAR CLIENTE
 def cliente_edit(request, cliente_pk):
     cliente = Cliente.objects.get(pk=cliente_pk)
     form = ClienteForm(request.POST or None, instance = cliente)
@@ -78,6 +81,8 @@ def cliente_edit(request, cliente_pk):
         'cliente': cliente.id
     }
     return render(request,'portal/cliente_edit.html',context)
+
+# FUNÇÃO PARA EXCLUIR CLIENTE
 def cliente_delete(request, cliente_pk):
    
     cliente = get_object_or_404(Cliente, pk=cliente_pk)
