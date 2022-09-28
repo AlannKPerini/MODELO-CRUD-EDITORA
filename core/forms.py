@@ -1,6 +1,7 @@
 from django import forms
 
-from core.models import Autor, Cliente
+from core.models import Autor
+from core.models import Cliente
 
 class AutorForm(forms.ModelForm):
     class Meta:
