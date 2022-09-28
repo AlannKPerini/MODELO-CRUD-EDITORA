@@ -1,0 +1,15 @@
+{% extends 'portal/menu.html' %}
+
+{% block content %}
+    <div class="card-body">
+        <h4>ADICIONAR CLIENTE </h4>
+        <hr>
+        <form action="{% url 'cliente_add' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn  btn-success" type="submit">Salvar</button>
+            <a href="{% url 'cliente' %}" class="btn btn-danger">Cancelar</a>
+        </form>
+
+    </div>
+{% endblock %}
